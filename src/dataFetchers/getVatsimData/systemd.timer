@@ -1,0 +1,11 @@
+[Unit]
+Description=Gets VATSIM Data every 15 seconds
+Requires=getVatsimData.service
+
+[Timer]
+Unit=getVatsimData.service
+OnBootSec=1sec
+OnUnitActiveSec=15sec
+
+[Install]
+WantedBy=timers.target

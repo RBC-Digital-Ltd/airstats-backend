@@ -7,6 +7,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Flight {
-  id Int @id @default(autoincrement())
+model flight {
+  id             Int          @id @default(autoincrement())
+  callsign       String
+  cid            Int
+  departure      String
+  arrival        String
+  is_active      Boolean
+  inactive_count Int          @default(0)
+  flightdata     flightdata[]
+}
+
+model flightdata {
+  id        Int    @id @default(autoincrement())
+  flight_id Int
+  flight    flight @relation(fields: [flight_id], references: [id])
+
+  latitude    Float
+  longitude   Float
+  altitude    Int
+  groundspeed Int
+  transponder Int
+  heading     Int
+  qnh_i_hg    Float
+  qnh_mb      Float
+  timestamp   DateTime @default(now())
+
+  @@unique([flight_id, timestamp])
 }

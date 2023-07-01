@@ -19,11 +19,7 @@ const main = async () => {
     ],
   });
 
-  await Promise.all(
-    pilots.map(async (pilot) => {
-      await pub.send({ routingKey: "vatsim-pilot-data", durable: true }, pilot);
-    })
-  );
+  await pub.send({ routingKey: "vatsim-pilot-data", durable: true }, pilots);
 
   await pub.close();
   await rabbit.close();

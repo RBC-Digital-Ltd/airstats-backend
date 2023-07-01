@@ -5,6 +5,12 @@
       "instances": "max",
       "exec_mode": "cluster",
       "watch": true
+    },
+    {
+      "script": "markInactivePilots.js",
+      "instances": "1",
+      "exec_mode": "cluster",
+      "watch": true
     }
   ]
 }

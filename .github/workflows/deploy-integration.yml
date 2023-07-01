@@ -93,6 +93,7 @@ jobs:
         with:
           envkey_RABBITMQ_USER: ${{ secrets.RABBITMQ_USER }}
           envkey_RABBITMQ_PASSWORD: ${{ secrets.RABBITMQ_PASSWORD }}
+          envkey_DATABASE_URL: ${{ secrets.DATABASE_URL_DEV }}
           directory: dist
           file_name: .env
 

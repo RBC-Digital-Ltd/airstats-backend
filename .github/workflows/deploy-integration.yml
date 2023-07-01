@@ -53,6 +53,9 @@ jobs:
       - run: yarn
       - run: yarn build:fetcher
 
+      - name: Deploy with Rsync
+        run: rsync -avz ./dist/ ${{ secrets.SSH_USER_DEV }}@${{ secrets.SSH_HOST_DEV }}:/home/${{ secrets.SSH_USER_DEV }}/airstats-backend/dist
+
   publish-api:
     runs-on: ubuntu-latest
 

@@ -52,6 +52,9 @@ jobs:
 
       - run: yarn
       - run: yarn build:all
+        env:
+          RABBITMQ_USER: ${{ secrets.RABBITMQ_USER }}
+          RABBITMQ_PASSWORD: ${{ secrets.RABBITMQ_PASSWORD }}
 
       - name: Deploy with Rsync
         run: rsync -avz ./dist/ ${{ secrets.SSH_USER_DEV }}@${{ secrets.SSH_HOST_DEV }}:/home/${{ secrets.SSH_USER_DEV }}/airstats-backend/dist

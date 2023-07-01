@@ -4,7 +4,9 @@ import { getData } from "./getData.js";
 const main = async () => {
   const { pilots } = await getData();
 
-  const rabbit = new Connection("amqp://guest:guest@localhost");
+  const rabbit = new Connection(
+    `amqp://${process.env.RABBITMQ_USER}:${process.env.RABBITMQ_PASSWORD}@localhost`
+  );
   const pub = rabbit.createPublisher({
     confirm: true,
     maxAttempts: 2,

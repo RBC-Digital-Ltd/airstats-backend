@@ -10,7 +10,7 @@ provider:
   stage: ${opt:stage, 'local'}
   region: eu-west-1
   environment:
-    # DATABASE_URL: ${env:DATABASE_URL}
+    DATABASE_URL: ${env:DATABASE_URL}
 
 plugins:
   - serverless-esbuild
@@ -21,7 +21,7 @@ package:
 
 functions:
   hello:
-    handler: src/api/hello/index.handler
+    handler: src/api/getFlight/index.handler
     events:
       - http:
           path: hello

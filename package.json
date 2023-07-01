@@ -12,7 +12,8 @@
     "deploy": "serverless deploy",
     "build:all": "yarn build:fetcher && yarn build:pilotDataParser",
     "build:fetcher": "esbuild src/dataFetchers/getVatsimData/index.ts --bundle --platform=node --outfile=dist/getVatsimData.js",
-    "build:pilotDataParser": "esbuild src/dataParsers/vatsimPilotData/index.ts --bundle --platform=node --outfile=dist/vatsimPilotData.js && cp src/dataParsers/vatsimPilotData/pm2.json dist/pm2.json"
+    "build:pilotDataParser": "esbuild src/dataParsers/vatsimPilotData/index.ts --bundle --platform=node --outfile=dist/vatsimPilotData.js && cp src/dataParsers/vatsimPilotData/pm2.json dist/pm2.json",
+    "typeorm": "typeorm-ts-node-commonjs"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "@types/aws-lambda": "^8.10.119",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
+    "@types/pg": "^8.10.2",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "esbuild": "^0.18.11",
@@ -51,8 +53,10 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "dotenv": "^16.3.1",
+    "@prisma/client": "4.16.2",
     "got": "^11.0.0",
+    "pg": "^8.11.1",
+    "prisma": "^4.16.2",
     "rabbitmq-client": "^4.1.0"
   }
 }

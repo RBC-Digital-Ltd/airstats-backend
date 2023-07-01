@@ -1,3 +1,4 @@
+import "dotenv/config"; // eslint-disable-line
 import { Connection } from "rabbitmq-client";
 import { getData } from "./getData.js";
 

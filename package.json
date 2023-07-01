@@ -3,10 +3,6 @@
   "version": "0.0.1",
   "description": "Backend for the Airstats Service",
   "main": "index.js",
-  "private": true,
-  "workspaces": [
-    "workspaces/*"
-  ],
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
@@ -53,6 +49,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "got": "^11.0.0"
+    "got": "^11.0.0",
+    "rabbitmq-client": "^4.1.0"
   }
 }

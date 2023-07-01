@@ -1,0 +1,9 @@
+[Unit]
+Description=Gets Data from VATSIM
+
+[Service]
+Type=oneshot
+ExecStart=/home/rahul/.nvm/versions/node/v20.3.1/bin/node /home/rahul/airstats-backend/dist/getVatsimData.js
+
+[Install]
+WantedBy=multi-user.target

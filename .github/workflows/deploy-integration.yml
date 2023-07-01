@@ -52,9 +52,14 @@ jobs:
 
       - run: yarn
       - run: yarn build:all
-        env:
-          RABBITMQ_USER: ${{ secrets.RABBITMQ_USER }}
-          RABBITMQ_PASSWORD: ${{ secrets.RABBITMQ_PASSWORD }}
+
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_RABBITMQ_USER: ${{ secrets.RABBITMQ_USER }}
+          envkey_RABBITMQ_PASSWORD: ${{ secrets.RABBITMQ_PASSWORD }}
+          directory: dist
+          file_name: .env
 
       - name: Deploy with Rsync
         run: rsync -avz ./dist/ ${{ secrets.SSH_USER_DEV }}@${{ secrets.SSH_HOST_DEV }}:/home/${{ secrets.SSH_USER_DEV }}/airstats-backend/dist

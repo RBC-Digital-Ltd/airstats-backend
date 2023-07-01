@@ -11,7 +11,42 @@ permissions:
   contents: read
 
 jobs:
+  migrate-database:
+    runs-on: ubuntu-latest
+
+    environment: dev
+
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL_DEV }}
+      CI: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Cache
+        uses: actions/cache@v3
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TAILSCALE_OAUTH_ID }}
+          oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
+          tags: tag:ci
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+
+      - run: yarn
+      - run: yarn prisma migrate deploy
+
   build-fetcher:
+    needs: migrate-database
     runs-on: ubuntu-latest
 
     environment: dev
@@ -60,6 +95,7 @@ jobs:
         run: rsync -avz ./dist/ ${{ secrets.SSH_USER_DEV }}@${{ secrets.SSH_HOST_DEV }}:/home/${{ secrets.SSH_USER_DEV }}/airstats-backend/dist
 
   publish-api:
+    needs: migrate-database
     runs-on: ubuntu-latest
 
     environment: dev

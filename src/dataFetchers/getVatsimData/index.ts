@@ -7,3 +7,5 @@ export const handler = async (): Promise<void> => {
 
   console.log(data);
 };
+
+handler();

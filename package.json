@@ -3,13 +3,18 @@
   "version": "0.0.1",
   "description": "Backend for the Airstats Service",
   "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "workspaces/*"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
     "format": "prettier --check .",
     "typecheck": "tsc --pretty --noEmit",
     "dev": "serverless offline --reloadHandler",
-    "deploy": "serverless deploy"
+    "deploy": "serverless deploy",
+    "build:fetcher": "esbuild src/dataFetchers/getVatsimData/index.ts --bundle --platform=node --outfile=dist/getVatsimData.js"
   },
   "repository": {
     "type": "git",

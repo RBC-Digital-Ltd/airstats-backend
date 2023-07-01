@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "format": "prettier --check .",
     "typecheck": "tsc --pretty --noEmit",
-    "dev": "serverless offline --reloadHandler"
+    "dev": "serverless offline --reloadHandler",
+    "deploy": "serverless deploy"
   },
   "repository": {
     "type": "git",

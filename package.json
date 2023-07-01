@@ -14,7 +14,7 @@
     "typecheck": "tsc --pretty --noEmit",
     "dev": "serverless offline --reloadHandler",
     "deploy": "serverless deploy",
-    "build:fetcher": "esbuild src/dataFetchers/getVatsimData/index.mts --bundle --platform=node --outfile=dist/getVatsimData.mjs"
+    "build:fetcher": "esbuild src/dataFetchers/getVatsimData/index.mts --bundle --platform=node --outfile=dist/getVatsimData.mjs --format=esm"
   },
   "repository": {
     "type": "git",

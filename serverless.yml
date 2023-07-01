@@ -6,6 +6,12 @@ provider:
   runtime: nodejs18.x
 
 functions:
+  hello:
+    handler: src/api/hello/index.handler
+    events:
+      - http:
+          path: hello
+          method: get
 
 plugins:
   - serverless-esbuild

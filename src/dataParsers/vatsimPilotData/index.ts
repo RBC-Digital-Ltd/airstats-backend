@@ -81,34 +81,38 @@ const sub = rabbit.createConsumer(
       ]);
     }
 
+    try {
+      await query(
+        `INSERT INTO flightdata
+        (
+          flight_id,
+          latitude,
+          longitude,
+          altitude,
+          groundspeed,
+          transponder,
+          heading,
+          qnh_i_hg,
+          qnh_mb,
+          timestamp
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+        [
+          id,
+          latitude,
+          longitude,
+          altitude,
+          groundspeed,
+          transponder,
+          heading,
+          qnhIHg,
+          qnhMb,
+          lastUpdated,
+        ]
+      );
+    } catch (error) {
+      console.log("error", error);
+    }
     // ADD NEW FLIGHT DATA
-    await query(
-      `INSERT INTO flightdata
-      (
-        flight_id,
-        latitude,
-        longitude,
-        altitude,
-        groundspeed,
-        transponder,
-        heading,
-        qnh_i_hg,
-        qnh_mb,
-        timestamp
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
-      [
-        id,
-        latitude,
-        longitude,
-        altitude,
-        groundspeed,
-        transponder,
-        heading,
-        qnhIHg,
-        qnhMb,
-        lastUpdated,
-      ]
-    );
   }
 );
 

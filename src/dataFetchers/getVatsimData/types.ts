@@ -17,7 +17,7 @@ declare interface IFlightPlan {
   assigned_transponder: string;
 }
 
-declare interface IVatsimPilot {
+export declare interface IVatsimPilot {
   cid: number;
   name: string;
   callsign: string;

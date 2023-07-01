@@ -1,0 +1,24 @@
+service: life-backend
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  hello:
+    handler: src/api/hello/index.handler
+    events:
+      - http:
+          path: hello
+          method: get
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+custom:
+  esbuild:
+    watch:
+      pattern: ["src/**/*.ts"] # match only typescript files in src directory
+      ignore: ["temp/**/*"]

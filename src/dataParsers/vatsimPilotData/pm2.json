@@ -1,0 +1,10 @@
+{
+  "apps": [
+    {
+      "script": "vatsimPilotData.js",
+      "instances": "max",
+      "exec_mode": "cluster",
+      "watch": true
+    }
+  ]
+}

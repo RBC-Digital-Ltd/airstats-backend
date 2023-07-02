@@ -24,7 +24,7 @@ functions:
     handler: src/api/getFlight/index.handler
     events:
       - http:
-          path: hello
+          path: flight/{id}
           method: get
 
 custom:

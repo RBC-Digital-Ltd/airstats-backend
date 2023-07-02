@@ -15,16 +15,16 @@ model flight {
   arrival              String
   is_active            Boolean
   inactive_count       Int          @default(0)
-  aircraft             String
-  aircraft_short       String
-  aircraft_faa         String
-  alternate            String
-  remarks              String
-  route                String
-  flight_rules         String
-  flight_plan_altitude String
-  revision_id          Int
-  assigned_transponder String
+  aircraft             String       @default("")
+  aircraft_short       String       @default("")
+  aircraft_faa         String       @default("")
+  alternate            String       @default("")
+  remarks              String       @default("")
+  route                String       @default("")
+  flight_rules         String       @default("")
+  flight_plan_altitude String       @default("")
+  revision_id          Int          @default(0)
+  assigned_transponder String       @default("")
   flightdata           flightdata[]
 }
 

@@ -1,6 +1,5 @@
-# Use postgres/example user/password credentials
-version: "3.1"
-
+version: "3.8"
+name: airstats
 services:
   db:
     image: postgres

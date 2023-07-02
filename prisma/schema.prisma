@@ -8,14 +8,24 @@ datasource db {
 }
 
 model flight {
-  id             Int          @id @default(autoincrement())
-  callsign       String
-  cid            Int
-  departure      String
-  arrival        String
-  is_active      Boolean
-  inactive_count Int          @default(0)
-  flightdata     flightdata[]
+  id                   Int          @id @default(autoincrement())
+  callsign             String
+  cid                  Int
+  departure            String
+  arrival              String
+  is_active            Boolean
+  inactive_count       Int          @default(0)
+  aircraft             String
+  aircraft_short       String
+  aircraft_faa         String
+  alternate            String
+  remarks              String
+  route                String
+  flight_rules         String
+  flight_plan_altitude String
+  revision_id          Int
+  assigned_transponder String
+  flightdata           flightdata[]
 }
 
 model flightdata {

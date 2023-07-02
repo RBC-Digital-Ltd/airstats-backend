@@ -12,7 +12,6 @@ pool.on("error", (err) => {
 });
 
 export const query = async (text: string, params: any) => {
-  console.log(process.env);
   const result = await pool.query(text, params);
 
   return result;

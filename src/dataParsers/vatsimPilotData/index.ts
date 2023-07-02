@@ -36,9 +36,32 @@ const sub = rabbit.createConsumer(
       qnh_mb: qnhMb,
       last_updated: lastUpdated,
     } = data;
-    let { departure, arrival } = flightPlan || {};
+    let {
+      departure,
+      arrival,
+      aircraft,
+      aircraft_short: aircraftShort,
+      aircraft_faa: aircraftFaa,
+      alternate,
+      remarks,
+      route,
+      flight_rules: flightRules,
+      altitude: flightPlanAltitude,
+      revision_id: revisionId,
+      assigned_transponder: assignedTransponder,
+    } = flightPlan || {};
     departure ||= "";
     arrival ||= "";
+    aircraft ||= "";
+    aircraftShort ||= "";
+    aircraftFaa ||= "";
+    alternate ||= "";
+    remarks ||= "";
+    route ||= "";
+    flightRules ||= "";
+    flightPlanAltitude ||= "";
+    revisionId ||= 0;
+    assignedTransponder ||= "";
 
     // GET FLIGHT BY CID
     const { rows } = await query(
@@ -51,8 +74,23 @@ const sub = rabbit.createConsumer(
     // IF NO FLIGHT -> ADD NEW FLIGHT
     if (rows.length === 0) {
       const result = await query(
-        `INSERT INTO Flight (callsign, cid, departure, arrival, is_active) VALUES ($1, $2, $3, $4, true) RETURNING id`,
-        [callsign, cid, departure, arrival]
+        `INSERT INTO Flight (callsign, cid, departure, arrival, is_active, aircraft, aircraft_short, aircraft_faa, alternate, remarks, route, flight_rules, flight_plan_altitude, revision_id, assigned_transponder) VALUES ($1, $2, $3, $4, true, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING id`,
+        [
+          callsign,
+          cid,
+          departure,
+          arrival,
+          aircraft,
+          aircraftShort,
+          aircraftFaa,
+          alternate,
+          remarks,
+          route,
+          flightRules,
+          flightPlanAltitude,
+          revisionId,
+          assignedTransponder,
+        ]
       );
 
       id = result.rows[0].id;
@@ -68,8 +106,23 @@ const sub = rabbit.createConsumer(
       ]);
 
       const result = await query(
-        `INSERT INTO Flight (callsign, cid, departure, arrival, is_active) VALUES ($1, $2, $3, $4, true) RETURNING id`,
-        [callsign, cid, departure, arrival]
+        `INSERT INTO Flight (callsign, cid, departure, arrival, is_active, aircraft, aircraft_short, aircraft_faa, alternate, remarks, route, flight_rules, flight_plan_altitude, revision_id, assigned_transponder) VALUES ($1, $2, $3, $4, true, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING id`,
+        [
+          callsign,
+          cid,
+          departure,
+          arrival,
+          aircraft,
+          aircraftShort,
+          aircraftFaa,
+          alternate,
+          remarks,
+          route,
+          flightRules,
+          flightPlanAltitude,
+          revisionId,
+          assignedTransponder,
+        ]
       );
 
       id = result.rows[0].id;
@@ -79,6 +132,32 @@ const sub = rabbit.createConsumer(
       await query(`UPDATE Flight SET inactive_count = 0 WHERE id = $1`, [
         rows[0].id,
       ]);
+    }
+
+    if (
+      rows[0].aircraft !== aircraft ||
+      rows[0].aircraft_short !== aircraftShort ||
+      rows[0].aircraft_faa !== aircraftFaa ||
+      rows[0].route !== route ||
+      rows[0].flight_rules !== flightRules ||
+      rows[0].flight_plan_altitude !== flightPlanAltitude ||
+      rows[0].revision_id !== revisionId ||
+      rows[0].assigned_transponder !== assignedTransponder
+    ) {
+      await query(
+        `UPDATE Flight SET aircraft = $1, aircraft_short = $2, aircraft_faa = $3, route = $4, flight_rules = $5, flight_plan_altitude = $6, revision_id = $7, assigned_transponder = $8 WHERE id = $9`,
+        [
+          aircraft,
+          aircraftShort,
+          aircraftFaa,
+          route,
+          flightRules,
+          flightPlanAltitude,
+          revisionId,
+          assignedTransponder,
+          rows[0].id,
+        ]
+      );
     }
 
     try {

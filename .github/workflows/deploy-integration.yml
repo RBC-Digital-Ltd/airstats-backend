@@ -108,6 +108,7 @@ jobs:
 
     env:
       CI: true
+      DATABASE_URL: ${{ secrets.DATABASE_URL_DEV }}
 
     steps:
       - name: Checkout

@@ -135,14 +135,15 @@ const sub = rabbit.createConsumer(
     }
 
     if (
-      rows[0].aircraft !== aircraft ||
-      rows[0].aircraft_short !== aircraftShort ||
-      rows[0].aircraft_faa !== aircraftFaa ||
-      rows[0].route !== route ||
-      rows[0].flight_rules !== flightRules ||
-      rows[0].flight_plan_altitude !== flightPlanAltitude ||
-      rows[0].revision_id !== revisionId ||
-      rows[0].assigned_transponder !== assignedTransponder
+      rows.length > 0 &&
+      (rows[0].aircraft !== aircraft ||
+        rows[0].aircraft_short !== aircraftShort ||
+        rows[0].aircraft_faa !== aircraftFaa ||
+        rows[0].route !== route ||
+        rows[0].flight_rules !== flightRules ||
+        rows[0].flight_plan_altitude !== flightPlanAltitude ||
+        rows[0].revision_id !== revisionId ||
+        rows[0].assigned_transponder !== assignedTransponder)
     ) {
       await query(
         `UPDATE Flight SET aircraft = $1, aircraft_short = $2, aircraft_faa = $3, route = $4, flight_rules = $5, flight_plan_altitude = $6, revision_id = $7, assigned_transponder = $8 WHERE id = $9`,

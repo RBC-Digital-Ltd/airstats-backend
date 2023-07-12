@@ -6699,10 +6699,10 @@ semver@^7.3.5, semver@^7.3.7, semver@^7.3.8, semver@^7.5.3:
   dependencies:
     lru-cache "^6.0.0"
 
-serverless-esbuild@^1.45.1:
-  version "1.45.1"
-  resolved "https://registry.yarnpkg.com/serverless-esbuild/-/serverless-esbuild-1.45.1.tgz#fe4ee98d4079a203236ee6f30f371d5a119479c1"
-  integrity sha512-vPb9R7MoecOv8kdI41BLvYuB5vxBDNKQfGacIuJbmMO25uQHEgyLk27ryb+8XAxmMpb5FuI6/eUZmCK2kRQZZA==
+serverless-esbuild@^1.46.0:
+  version "1.46.0"
+  resolved "https://registry.yarnpkg.com/serverless-esbuild/-/serverless-esbuild-1.46.0.tgz#11c1f03d302641e419ba038df9368014c8f6eaa1"
+  integrity sha512-fMB6PaxUFI/YBPvO9R8G4GXEpYIkXr0Dmsq+Qswj3umHm3otiR9AiKclA65B93pfqVrDfioOx9pQX76+8cuRIw==
   dependencies:
     acorn "^8.8.1"
     acorn-walk "^8.2.0"

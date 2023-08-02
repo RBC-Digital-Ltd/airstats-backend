@@ -55,7 +55,7 @@
   "dependencies": {
     "@prisma/client": "4.16.2",
     "got": "^11.0.0",
-    "pg": "^8.11.1",
+    "pg": "^8.11.2",
     "prisma": "^4.16.2",
     "rabbitmq-client": "^4.1.0"
   }

@@ -56,7 +56,7 @@
     "@prisma/client": "4.16.2",
     "got": "^11.0.0",
     "pg": "^8.11.2",
-    "prisma": "^4.16.2",
+    "prisma": "^5.19.1",
     "rabbitmq-client": "^4.2.0"
   }
 }

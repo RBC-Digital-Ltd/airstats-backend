@@ -1548,15 +1548,46 @@
   dependencies:
     "@prisma/engines-version" "4.16.1-1.4bc8b6e1b66cb932731fb1bdbbc550d1e010de81"
 
+"@prisma/debug@5.21.0":
+  version "5.21.0"
+  resolved "https://registry.yarnpkg.com/@prisma/debug/-/debug-5.21.0.tgz#6e53df6963b31bf5c4dd5d996b85a51e9106c796"
+  integrity sha512-8gX68E36OKImh7LBz5fFIuTRLZgM1ObnDA8ukhC1kZvTK7k7Unti6pJe3ZiudzuFAxae06PV1rhq1u9DZbXVnQ==
+
 "@prisma/engines-version@4.16.1-1.4bc8b6e1b66cb932731fb1bdbbc550d1e010de81":
   version "4.16.1-1.4bc8b6e1b66cb932731fb1bdbbc550d1e010de81"
   resolved "https://registry.yarnpkg.com/@prisma/engines-version/-/engines-version-4.16.1-1.4bc8b6e1b66cb932731fb1bdbbc550d1e010de81.tgz#d3b5dcf95b6d220e258cbf6ae19b06d30a7e9f14"
   integrity sha512-q617EUWfRIDTriWADZ4YiWRZXCa/WuhNgLTVd+HqWLffjMSPzyM5uOWoauX91wvQClSKZU4pzI4JJLQ9Kl62Qg==
 
-"@prisma/engines@4.16.2":
-  version "4.16.2"
-  resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-4.16.2.tgz#5ec8dd672c2173d597e469194916ad4826ce2e5f"
-  integrity sha512-vx1nxVvN4QeT/cepQce68deh/Turxy5Mr+4L4zClFuK1GlxN3+ivxfuv+ej/gvidWn1cE1uAhW7ALLNlYbRUAw==
+"@prisma/engines-version@5.21.0-36.08713a93b99d58f31485621c634b04983ae01d95":
+  version "5.21.0-36.08713a93b99d58f31485621c634b04983ae01d95"
+  resolved "https://registry.yarnpkg.com/@prisma/engines-version/-/engines-version-5.21.0-36.08713a93b99d58f31485621c634b04983ae01d95.tgz#3b8a6b2c5cb137c04474f5b19e14e359493ee6e1"
+  integrity sha512-hfq7c8MnkhcZTY0bGXG6bV5Cr7OsnHLERNy4xkZy6rbpWnhtfjuj3yUVM4u1GKXd6uWmFbg0+HDw8KXTgTVepQ==
+
+"@prisma/engines@5.21.0":
+  version "5.21.0"
+  resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-5.21.0.tgz#aacfda471a8c8d22e214e3f0ede334a9634ca383"
+  integrity sha512-IBewQJiDnFiz39pl8kEIzmzV4RAoBPBD2DoLDntMMXObg1an90Dp+xeb1mmwrTgRDE3elu/LYxyVPEkKw9LZ7A==
+  dependencies:
+    "@prisma/debug" "5.21.0"
+    "@prisma/engines-version" "5.21.0-36.08713a93b99d58f31485621c634b04983ae01d95"
+    "@prisma/fetch-engine" "5.21.0"
+    "@prisma/get-platform" "5.21.0"
+
+"@prisma/fetch-engine@5.21.0":
+  version "5.21.0"
+  resolved "https://registry.yarnpkg.com/@prisma/fetch-engine/-/fetch-engine-5.21.0.tgz#89654b782b35d14e39e2dc8e8621f249909e5add"
+  integrity sha512-nXKJrsxVKng6yjJzl7vBjrr3S34cOmWQ9SiGTo9xidVTmVSgg5GCTwDL4r2be8DE3RntqK5BW2LWQ1gF80eINw==
+  dependencies:
+    "@prisma/debug" "5.21.0"
+    "@prisma/engines-version" "5.21.0-36.08713a93b99d58f31485621c634b04983ae01d95"
+    "@prisma/get-platform" "5.21.0"
+
+"@prisma/get-platform@5.21.0":
+  version "5.21.0"
+  resolved "https://registry.yarnpkg.com/@prisma/get-platform/-/get-platform-5.21.0.tgz#4241418a6c86ffd265748186e0774eac5eff2bf7"
+  integrity sha512-NAyaAcHJhs0IysGYJtM6Fm3ccEs/LkCZqz/8riVkkJswFrRtFV93jAUIVKWO/wj1Ca1gO7HaMd/tr6e/9Xmvww==
+  dependencies:
+    "@prisma/debug" "5.21.0"
 
 "@serverless/dashboard-plugin@^6.2.3":
   version "6.2.3"
@@ -4370,6 +4401,11 @@ fs2@^0.3.9:
     memoizee "^0.4.14"
     type "^2.1.0"
 
+fsevents@2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
+  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
+
 fsevents@^2.3.2, fsevents@~2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
@@ -6620,12 +6656,14 @@ pretty-format@^29.6.2:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
-prisma@^4.16.2:
-  version "4.16.2"
-  resolved "https://registry.yarnpkg.com/prisma/-/prisma-4.16.2.tgz#469e0a0991c6ae5bcde289401726bb012253339e"
-  integrity sha512-SYCsBvDf0/7XSJyf2cHTLjLeTLVXYfqp7pG5eEVafFLeT0u/hLFz/9W196nDRGUOo1JfPatAEb+uEnTQImQC1g==
+prisma@^5.21.0:
+  version "5.21.0"
+  resolved "https://registry.yarnpkg.com/prisma/-/prisma-5.21.0.tgz#4f3d070e873f8f2a584eb060b27a9ffa815b03b7"
+  integrity sha512-Pc/xn2eZPiANbFFGp+YoCQSKQ5t9W/dBzQ+3HrcfrOWZAzt7n77VsVCPa9WdfTjim4CuodkCFyiP2+uGY5/gqw==
   dependencies:
-    "@prisma/engines" "4.16.2"
+    "@prisma/engines" "5.21.0"
+  optionalDependencies:
+    fsevents "2.3.3"
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
